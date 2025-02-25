@@ -68,7 +68,8 @@ class MainActivity : AppCompatActivity() {
 
         try {
             val intent = Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            val nfcPendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+            val nfcPendingIntent = PendingIntent.getActivity(this, 0, intent,
+                PendingIntent.FLAG_IMMUTABLE)
             adapter?.enableForegroundDispatch(this, nfcPendingIntent, null, null)
             binding.stateTextView.text = getString(R.string.nfc_enabled)
             Timber.d("NFC enabled")
